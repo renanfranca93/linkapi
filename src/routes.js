@@ -69,17 +69,17 @@ routes.get('/findwon', async function(req, res){
             //transformando o array temporário em um objeto
             const obj = {...localdata};
             
-            //incluindo o objeto no array principal que será a collection a ser
-            //salva no banco de dados
+            //incluindo o objeto no array principal 
             //dealsdata.push(obj);
+            
 
             var myData = new Deal(obj);
             myData.save()
             .then(item => {
-              res.send("item saved to database");
+              res.send("Collection saved!");
             })
             .catch(err => {
-              res.status(400).send("unable to save to database");
+              res.status(400).send("Unable to save to database");
             });
 
             console.log(dealsdata);
@@ -88,7 +88,7 @@ routes.get('/findwon', async function(req, res){
         }   
     
 
-      return res.json(dealsdata);
+      //return res.json(dealsdata);
       });
 
 })
