@@ -49,7 +49,7 @@ routes.get('/findwon', async function(req, res){
       var deals = JSON.parse(body).data;
         
       //percorrer os registros buscando apenas os negócios "ganho" (status 
-        //igual a 'won')
+      //igual a 'won')
       for(let i = 0; i < deals.length; i++){ 
          if (deals[i].status == 'won') {
 
