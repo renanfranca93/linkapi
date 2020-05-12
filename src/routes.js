@@ -1,11 +1,40 @@
 import { Router } from 'express';
 import request from 'request';
+import mongoose from 'mongoose';
 
 const routes = new Router();
+
+ //criando schema do mongo
+ var dealSchema = new mongoose.Schema({
+  deal_id: Number,
+  user_id: Number,
+  user_name: String,
+  name: String,
+  value: Number,
+  date: Date,
+
+});
+
+//criando model 
+var Deal = mongoose.model("Deal", dealSchema);
 
 routes.get('/', (req, res)=>{
     return res.json({message:'Hello world!'});
 })
+
+
+routes.post('/mongo', (req, res)=>{ 
+
+  var myData = new Deal(req.body);
+   myData.save()
+  .then(item => {
+    res.send("item saved to database");
+  })
+  .catch(err => {
+    res.status(400).send("unable to save to database");
+  });
+})
+
 
 
 //rota para buscar registros de negócios "ganho" no pipedrive
@@ -42,7 +71,16 @@ routes.get('/findwon', async function(req, res){
             
             //incluindo o objeto no array principal que será a collection a ser
             //salva no banco de dados
-            dealsdata.push(obj);
+            //dealsdata.push(obj);
+
+            var myData = new Deal(obj);
+            myData.save()
+            .then(item => {
+              res.send("item saved to database");
+            })
+            .catch(err => {
+              res.status(400).send("unable to save to database");
+            });
 
             console.log(dealsdata);
          }

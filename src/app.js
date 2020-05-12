@@ -14,8 +14,8 @@ class App {
 
     mongo(){
         this.mongoConnection = mongoose.connect(
-            'mongodb://localhost:27017/deals',
-            {useNewUrlParser:true, userFindAndModify:true}
+            //'mongodb://localhost:27017/deals'
+            'mongodb+srv://mongo:mongo@cluster0-dmfi6.mongodb.net/test?retryWrites=true&w=majority/deals'
         )
     }
 
