@@ -2,10 +2,10 @@ import mongoose from 'mongoose';
 
 //criando schema do mongo
  var dealSchema = new mongoose.Schema({
-    deal_id: Number,
-    user_id: Number,
-    user_name: String,
-    name: String,
+    dealId: Number,
+    userId: Number,
+    userName: String,
+    orgName: String,
     value: Number,
     date: Date,
   

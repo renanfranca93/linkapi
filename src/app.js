@@ -14,9 +14,7 @@ class App {
 
     mongo(){
         this.mongoConnection = mongoose.connect(
-            //'mongodb://localhost:27017/deals'
             'mongodb+srv://mongo:mongo@cluster0-dmfi6.mongodb.net/deals',
-            //{ useNewUrlParser:true, useFindAndModify:true }
         )
     }
 
