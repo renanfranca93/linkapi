@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import request from 'request';
 import mongoose from 'mongoose';
-import findwon from './controllers/apiController'
+import {migrate, list} from './controllers/apiController'
 import infoController from './controllers/infoController'
 
 const routes = new Router();
@@ -11,7 +11,10 @@ const routes = new Router();
 routes.get('/', infoController);
 
 //rota que executa a migração das informações (pipedrive->bd->bling)
-routes.get('/migrate', findwon);
+routes.get('/migrate', migrate);
+
+//rota que executa a listagem dos dados do bd
+routes.get('/list', list);
 
 
 export default routes;

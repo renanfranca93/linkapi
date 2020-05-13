@@ -4,7 +4,7 @@ import {dealSchema, Deal} from '../models/Deal';
 
 
 //funcao que busca os dados na api da pipedrive
-async function findwon (req, res){
+async function migrate (req, res){
 
   await request('https://api.pipedrive.com/v1/deals/?api_token=5cbf5a48c36e90'+
   '798eb8685cf79e61efa873f096', function(error, response, body) {
@@ -112,4 +112,19 @@ request(options, function (error, response, body) {
   
 }
 
-export default findwon;
+function list(){
+
+  // var myDeals = Deal.find({});
+  // console.log(myDeals);
+
+  Deal.find({}).then((deal) => {
+    //retornar os artigos para o aplicativo que fez a requisição
+       console.log(deal);
+   }).catch((erro) => {
+   //Retornar erro ao aplicativo que fez a requisição informando que não encontrou nenhum artigo
+       console.log('Nenhum registro encontrado');
+   })
+
+}
+
+export {migrate, list};
